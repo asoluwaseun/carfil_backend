@@ -6,8 +6,8 @@ class CarOwners{
     static async getCarOwners(req, res){
         try{
             let { filter : filter_id} = req.query
-
-            let filter = filter_id ? await Models.filters.findOne({
+            filter_id = parseInt(filter_id)
+            let filter = filter_id && typeof(filter_id) === "number" ? await Models.filters.findOne({
                 where: {
                     id: filter_id
                 }
@@ -50,7 +50,6 @@ class CarOwners{
 
         }
         catch(err){
-            console.log(err)
             res.sendStatus(500)
         }
     }
