@@ -14,6 +14,7 @@ class Filters{
             res.status(200).json(response)
         }
         catch(err){
+            console.log(err)
             res.sendStatus(500)
         }
     }
