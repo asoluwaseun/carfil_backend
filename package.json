@@ -8,10 +8,12 @@
   "scripts": {
     "start": "node index.js",
     "data": "node ./helpers/data.js",
-    "test": "mocha --timeout 30000"
+    "test": "mocha --timeout 30000",
+    "docs": "./node_modules/.bin/apidoc -i routes/ -o documentation"
   },
   "license": "MIT",
   "dependencies": {
+    "apidoc": "^0.20.1",
     "compression": "^1.7.4",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",

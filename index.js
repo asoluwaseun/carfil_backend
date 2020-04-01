@@ -12,6 +12,7 @@ const routes = require('./routes/index');
 // MiddleWares
 app.use(helmet());
 app.use(compression());
+app.use('/documentation',express.static(__dirname + '/documentation'))
 
 app.use((req, res, next)=> {
     res.header("Access-Control-Allow-Origin", "*");

@@ -1,0 +1,9 @@
+{
+  "name": "Carfil Backend documentation",
+  "version": "1.0.0",
+  "description": "This documentation describes the API endpoints.",
+  "url" : "https://carfil.herokuapp.com/api/v1",
+  "template": {
+    "forceLanguage": "en"
+  }
+}
