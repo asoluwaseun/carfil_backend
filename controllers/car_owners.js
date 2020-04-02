@@ -38,7 +38,8 @@ class CarOwners{
             }
 
             let car_owners = await Models.car_owners.findAll({
-                where: filter_conditions
+                where: filter_conditions,
+                limit: 500
             })
 
             let response = {
