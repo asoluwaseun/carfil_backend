@@ -72,13 +72,6 @@ router.get('/filters', getFilters)
  * @apiName CarOwners
  * @apiGroup CarOwners
  *
- * @apiParam{Number} id Filter id.
- * @apiParam {Number} start_year Filter start year.
- * @apiParam {Number} end_year Filter end year.
- * @apiParam {String} gender Filter gender.
- * @apiParam {Object[]} countries Filter countries.
- * @apiParam {Object[]} colors Filter colors
- *
  * @apiSuccess {Number} id Car owner id.
  * @apiSuccess {Number} first_name Car owner first name.
  * @apiSuccess {Number} last_name Car owner last name.
