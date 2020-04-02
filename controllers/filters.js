@@ -1,20 +1,24 @@
 "use strict"
 const Models = require('../database/models/')
+const axios = require('axios')
 
 class Filters{
     static  async getFilters(req, res){
         try{
-            let filters = await Models.filters.findAll()
+            let {data: result } = await axios.get('https://ven10.co/assessment/filter.json');
 
-            let response = {
-                data: filters,
-                message: filters.length > 0 ? `${filters.length} found` : "No filter found"
+            let filters = []
+            if(result){
+                filters = result
             }
 
-            res.status(200).json(response)
+            let response = {
+                data: filters
+            }
+
+            res.status(200).send(response)
         }
         catch(err){
-            console.log(err)
             res.sendStatus(500)
         }
     }

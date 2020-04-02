@@ -1,17 +1,25 @@
 "use strict"
 const Models = require('../database/models/')
+const axios = require('axios')
 const Op = require('sequelize').Op
 
 class CarOwners{
     static async getCarOwners(req, res){
         try{
-            let { filter : filter_id} = req.query
+            let { filter: filter_id } = req.query
             filter_id = parseInt(filter_id)
-            let filter = filter_id && typeof(filter_id) === "number" ? await Models.filters.findOne({
-                where: {
-                    id: filter_id
-                }
-            }) : null
+            filter_id = filter_id && typeof(filter_id) === "number" ? filter_id : null
+
+            let filter = null;
+
+            if(filter_id){
+                let {data: filters} = await axios.get('https://ven10.co/assessment/filter.json')
+
+                let [ _filter ] = filters.filter((__filter)=>{
+                    return __filter.id === filter_id
+                })
+                filter = _filter
+            }
 
             let filter_conditions = {}
 
@@ -51,6 +59,7 @@ class CarOwners{
 
         }
         catch(err){
+            console.log(err)
             res.sendStatus(500)
         }
     }
